@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Pagamento</title>
+</head>
+<body>
+  <h2>Pagamento de R$10,99</h2>
+  <button onclick="processar()">Processar Pagamento</button>
+
+  <script>
+    function processar() {
+      fetch('/criar-pagamento', {
+        method: 'POST'
+      })
+      .then(res => res.json())
+      .then(data => {
+        window.location.href = data.link;
+      })
+      .catch(err => alert('Erro ao criar pagamento: ' + err));
+    }
+  </script>
+</body>
+</html>
